@@ -25,24 +25,24 @@ for(let i=0;i < products.length;i++){
 	products[i] = products[i].split(':');
 	console.log(products[i]);
 	// STEP 4: Now we have an array as an element of an array - set the second array element to the product price (as type number)
-	products[i][1] = Number(products[i][1]);
-	console.log(products[i][1]);
-	// STEP 5: Add the price of this product to the invoice total
-	invoiceTotal += products[i][1];
-	console.log(invoiceTotal);
-	// STEP 6: Capture each product name and price as variables 
+	 products[i][1] = Number(products[i][1]);
+	 console.log(products[i][1]);
+	// // STEP 5: Add the price of this product to the invoice total
+	 invoiceTotal += products[i][1];
+	 console.log(invoiceTotal);
+	// // STEP 6: Capture each product name and price as variables 
 	let itemDesc = products[i][0];
-	console.log('item desc is:' + itemDesc);
-	let itemPrice = products[i][1];
+	 console.log('item desc is:' + itemDesc);
+	 let itemPrice = products[i][1];
 	console.log('item price is:' + itemPrice);
-	// STEP 7: Create a TR element for this product and price in the invoice table
-	let itemRow = document.createElement('tr');
-	// STEP 8: Build the string that contains two TD elements each containing one of the item description, and the item price
-	let itemDetails = '<td>' + itemDesc + '</td><td>' + itemPrice + '</td>';
-	console.log(itemDetails);
+	 // STEP 7: Create a TR element for this product and price in the invoice table
+	 let itemRow = document.createElement('tr');
+	// // STEP 8: Build the string that contains two TD elements each containing one of the item description, and the item price
+	 let itemDetails = '<td>' + itemDesc + '</td><td>' + itemPrice + '</td>';
+	 console.log(itemDetails);
 
 	
-	// STEP 9: Set the above string as the innerHTML of the new TR element, and then append the new element to the table body (var productList)
+	// // STEP 9: Set the above string as the innerHTML of the new TR element, and then append the new element to the table body (var productList)
 	itemRow.innerHTML = itemDetails;
 	productList.appendChild(itemRow);
 
