@@ -30,62 +30,62 @@ function setWeather() {
 	let choice = select.value;
 	let temperature = temp.value;
 	/* STEP 2b: Craft an IF/ELSEIF/ELSE that changes the src attribute of the icon element to the appropriate .svg file in the images folder */
-	if(choice === 'sunny'){
-		icon.setAttribute('src','images/sunny.svg');
-		//check the temperature
-		if(temperature >=15){
-			//It is warm
-			page.style.backgroundColor = 'orange';
-		} else{
-			page.style.backgroundColor = 'lightblue';
-		}
-	}
-	else if(choice === 'rainy'){
-		icon.setAttribute('src','images/rainy.svg');
-		if(temperature > 30){
-			page.style.backgroundColor = 'steelblue';
-		}
-		else{
-			page.style.backgroundColor = 'azure';
-		}
-	}
-	else if(choice === 'windy'){
-		icon.setAttribute('src','images/windy.svg');
-		if(temperature < 15){
-			page.style.backgroundColor = 'darkgray';
-		}
-		else{
-			page.style.backgroundColor = 'orange';
-		}
-	}
-	else
-	{
-		icon.setAttribute('src','images/night.svg');
-		page.style.backgroundColor = '#000000';
-	}
+	// if(choice === 'sunny'){
+	// 	icon.setAttribute('src','images/sunny.svg');
+	// 	//check the temperature
+	// 	if(temperature >=15){
+	// 		//It is warm
+	// 		page.style.backgroundColor = 'orange';
+	// 	} else{
+	// 		page.style.backgroundColor = 'lightblue';
+	// 	}
+	// }
+	// else if(choice === 'rainy'){
+	// 	icon.setAttribute('src','images/rainy.svg');
+	// 	if(temperature > 30){
+	// 		page.style.backgroundColor = 'steelblue';
+	// 	}
+	// 	else{
+	// 		page.style.backgroundColor = 'azure';
+	// 	}
+	// }
+	// else if(choice === 'windy'){
+	// 	icon.setAttribute('src','images/windy.svg');
+	// 	if(temperature < 15){
+	// 		page.style.backgroundColor = 'darkgray';
+	// 	}
+	// 	else{
+	// 		page.style.backgroundColor = 'orange';
+	// 	}
+	// }
+	// else
+	// {
+	// 	icon.setAttribute('src','images/night.svg');
+	// 	page.style.backgroundColor = '#000000';
+	// }
 		//0123456789abcdef//15*16=255
 
 	/* STEP 3: Add a nested IF/ELSE statement inside the 'sunny' condition above that tests for temperature, and if it is equal to or greater than 15, turn the page background orange, otherwise turn it lightblue */
 
 	/* STEP 4: Logical operators - and, or, not (delete multi-line comment delimiters below) */
 	// STEP 4a: AND - && (It's sunny AND it's at least 15deg)
-/*
-	if () {
+
+	if (choice === 'sunny' && temperature > 15) {
 		comments.textContent = 'It is sunny and warm — time to find your sunglasses!';
 	// STEP 4b: AND, once again - && (It's sunny AND it's less than 15deg)
-	} else if () {
+	} else if (choice === 'sunny' && temperature < 15) {
 		comments.textContent = 'It is sunny out there, but it is a bit cool.';
 	// STEP 4c: OR - || (It's windy OR rainy)
-	} else if () {
+	} else if (choice === 'windy' || choice === 'rainy') {
 		comments.textContent = 'The weather today is a bit unsettled.';
 	} else {
 		comments.textContent = 'You did not specify the type of weather, today.';
 	}
 	// STEP 4d: NOT - ! (It's NOT rainy)
-	if () {
+	if (choice !== 'rainy' || choice !== 'windy') {
 		comments.textContent += ' No sign of rain.';
 	}
-*/
+
 	// Weather icons by Cole Bemis - https://feathericons.com/, MIT, https://commons.wikimedia.org/w/index.php?curid=60153354
 
 } // End of setWeather() function
