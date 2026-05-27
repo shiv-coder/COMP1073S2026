@@ -127,10 +127,15 @@ switch (speed)
 } // End of getWindSpeed() function
 
 
-/* STEP 6: Ternary operator
+/* STEP 6: Ternary operator:shorter way of writing if-else
+	condition ? value iftrue : valueiffalse;
 This piece of syntax is a bit less typing, but it is harder to read */
 let breakMessage = document.querySelector('#breakTime');
 let coffeeBreak = true;
+
+breakMessage.textContent = coffeeBreak ? "Time for coffee" : "Back to next lesson";
+
+
 
 
 // This page inspired by and adapted from https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/conditionals
