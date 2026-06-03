@@ -1,41 +1,46 @@
-// Sometimes we just need to run a short code block in one place, and so we don't need a named FUNCTION. In this case, we can use an ANONYMOUS FUNCTION, which is a function that is defined without a name and is often used as a callback or event handler.
-// STEP 5: Add a crash counter variable
-let crashes = 0;
-
-// STEP 1: Create an event handler to listen for collisions, and add an anonymous function to handle the event
-registerEvent(EventType.onCollision,async () => {
-// STEP 2: Stop the robot from rolling, set the main LED to red, and play an explosion animation
-stopRoll();
-setMainLed({r:255, g:0,b:0});
-
-// STEP 3a: Make the robot say, "Collision", create a variable for a random heading, then set the heading
-await speak('I crashed!',true);
-
-// STEP 3b: Wait for half a second, set the main LED to white, and roll again
-await delay(0.5);
-    setMainLed({ r: 255, g: 255, b: 255 });
-    setSpeed(255);
-
-// STEP 6: Increment a crash counter
-    crashes++;
-});
-
-// STEP 4: Run the program and see how the robot reacts to collisions
+// STEP 12d: Declare position as a GLOBAL variable
+let position = getLocation();
 
 async function startProgram() {
-    setMainLed({
-        r: 255,
-        g: 255,
-        b: 255
-    });
-    // Main program loop
-    while (crashes < 5) {
-        setSpeed(255);
-        // A small delay to slow the execution of the loop so we don't overwhelm the hardware
-        await delay(0.025);
-    }
+    // We can make functions more versatile by including PARAMETERS. Parameters are like placeholders for data that the function requires to work properly. We provide the actual values (arguments) at the moment we invoke (call) the function.
+    // STEP 6: Light up the main LED with a random colour
+    setMainLed(getRandomColor());
+    // STEP 7: Call or invoke the traceSquare FUNCTION and pass a distance parameter of 25 (cm).
+    await traceSquare(255,50);
+
+    // STEP 8: Run the program.
+
+    // STEP 9: Add a velocity parameter to the above FUNCTION call (0-255).
+
+    // STEP 12b: Have the robot speak the current heading using the variable created down below inside the traceSquare() function.
+    await speak(`my current position is ${position.x.toString()}, ${position.y.toString()},true`);
+
+
+    /* STEP 12c: Notice how this does not work - the position variable is LOCAL in scope - it is only available within the code block 
+    comprising the traceSquare() function. Declare the variable at the GLOBAL level, then remove the 'let' within the traceSquare() function */
 
     exitProgram();
 }
 
+// STEP 1: Create a FUNCTION called traceSquare that accepts one parameter - distance (in cm) - and returns nothing.
+async function traceSquare(velocity,distance){
+    // STEP 2: Roll the robot with the rollToDistance() method and incorporate the distance parameter.
+    await rollToDistance(0,velocity,distance);
 
+    // STEP 3: Turn the robot 90 degrees to the right and roll again using the distance parameter.
+    await rollToDistance(90, velocity, distance);
+
+    // STEP 4: Repeat the previous two steps to complete the square.
+    await rollToDistance(180, velocity, distance);
+    await rollToDistance(270, velocity, distance);
+
+    // STEP 5: Write a text message on the screen using the distance parameter.
+    await speak(`${distance} centimeter sqaure, at velocity ${velocity}`);
+
+    // STEP 10: Modify the traceSquare FUNCTION above so that it accepts a second parameter - velocity.
+
+    // STEP 11: Change the above rollToDistance() METHODS so that they use the velocity parameter.
+
+    // STEP 12a: Declare and initialize a variable to capture the current position.
+    
+};
